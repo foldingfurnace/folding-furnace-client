@@ -1,0 +1,21 @@
+{
+  "name": "folding-furnace",
+  "version": "0.1.0",
+  "description": "Folding Furnace desktop application",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild": "electron-rebuild -f -w yourmodule"
+  },
+  "author": "jpaulsen",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "jquery": "^3.5.1",
+    "keytar": "^5.6.0"
+  },
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-rebuild": "^1.10.1"
+  }
+}

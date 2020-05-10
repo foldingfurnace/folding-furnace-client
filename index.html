@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Folding Furnace</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>window.$ = window.jQuery = require('jquery');</script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="./js/index.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="bg-secondary">
+  <!-- Nav tabs -->
+  <ul class="nav navbar-custom nav-tabs bg-dark">
+    <span class="navbar-brand mb-0 text-danger">Folding Furnace</span>
+    <li class="nav-item">
+      <a class="nav-link active text-warning" data-toggle="tab" href="#statusTab">Status</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-warning" data-toggle="tab" href="#settingsTab">Settings</a>
+    </li>
+  </ul>
+  <div id="errorAlert" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+    <button type="button" class="close" aria-label="Close" onclick="$('#errorAlert').hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <span class="small" id="errorMessage"></span>
+  </div>
+
+  <!-- Tab panes -->
+  <div class="container-fluid tab-content">
+    <div class="tab-pane container-fluid active" id="statusTab">
+      Here is where fun begins
+    </div>
+    <div class="tab-pane h-100 container-fluid fade" id="settingsTab">
+      <div class="d-flex justify-content-center">
+        Resets stored token, requiring re-login
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" id="resetToken" class="btn btn-outline-danger">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" data-backdrop='static'>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="login-form">
+          <div id="loginAlert" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+            <button type="button" class="close" aria-label="Close" onclick="$('#loginAlert').hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <span id="loginWarning"></span>
+          </div>
+
+          <form id="loginForm" action="/login" method="post">
+            <h2 class="text-center">Log in</h2>
+            <div class="form-group">
+              <input type="text" class="form-control" id="loginUsername" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="loginPassword" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                <span id="loginSpinner" class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Log in</button>
+            </div>
+          </form>
+          <p class="text-center">Need an account? <a href="#">Sign up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
