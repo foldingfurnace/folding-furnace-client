@@ -12,7 +12,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "jquery": "^3.5.1",
-    "keytar": "^5.6.0"
+    "keytar": "^5.6.0",
+    "promise-socket": "^6.0.3"
   },
   "devDependencies": {
     "electron": "^8.2.5",

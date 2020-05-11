@@ -4,7 +4,6 @@ const axios = require('axios');
 const URL = 'https://api.lo3skunk.works'
 
 
-// TODO: integrate JWT into this client?
 class FFApi {
     constructor (url) {
         this.url = url || URL;
@@ -28,13 +27,3 @@ class FFApi {
 module.exports = {
     FFApi: FFApi,
 };
-
-
-
-// {
-//     'commands': [
-//         {
-//             'command': 'state',
-//         }
-//     ]
-// }

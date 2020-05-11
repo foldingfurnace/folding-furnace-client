@@ -15,7 +15,23 @@ const COMMAND = {
         $("#errorMessage").text(arg.message);
         $("#errorAlert").show();
     },
+    'SHOW_LAST_POLLED': (arg) => {
+        $("#lastPolled").text(arg.message)
+    },
+    'SHOW_LAST_UPDATE': (arg) => {
+        $("#lastUpdate").text(arg.message)
+    },
+    'SHOW_SLOTS': (arg) => {
+        let slots = arg.message;
+
+        $("#slotList").empty();
+        
+        for (let slot in slots) {
+            $("#slotList").append(slotHtml(slots[slot]));
+        }
+    },
 };
+
 
 ipcRenderer.on('command', (event, arg) => {
     let fn = COMMAND[arg.command];
@@ -38,7 +54,6 @@ ipcRenderer.on('login-response', (event, arg) => {
 });
 
 
-// TODO: this waits on an async, maybe not what we want
 function login (username, password) {
     return ipcRenderer.send('login', {username, password});
 }
@@ -50,6 +65,11 @@ function showLoginSpinner (state) {
     } else {
         $("#loginSpinner").addClass('d-none');
     }
+}
+
+
+function slotHtml (slot) {
+    return `<li class="list-group-item list-group-item-dark">${slot.id}/${slot.description}: ${slot.status}</li>`
 }
 
 

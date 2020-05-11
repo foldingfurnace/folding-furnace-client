@@ -18,7 +18,7 @@ class Window {
 
         this.bWindow = new BrowserWindow(opts);
         this.bWindow.loadURL(url);
-        this.bWindow.webContents.openDevTools();
+        //this.bWindow.webContents.openDevTools();
     }
 
     get instance () {
@@ -47,6 +47,18 @@ class Window {
 
     async showErrorMessage (message) {
         this.bWindow.webContents.send('command', {command: 'SHOW_ERROR', message})
+    }
+
+    async showSlots (slots) {
+        this.bWindow.webContents.send('command', {command: 'SHOW_SLOTS', message: slots})
+    }
+
+    async showLastPolled (timestamp) {
+        this.bWindow.webContents.send('command', {command: 'SHOW_LAST_POLLED', message: timestamp});
+    }
+
+    async showLastUpdated (timestamp) {
+        this.bWindow.webContents.send('command', {command: 'SHOW_LAST_UPDATE', message: timestamp});
     }
 }
 

@@ -26,10 +26,10 @@
   <ul class="nav navbar-custom nav-tabs bg-dark">
     <span class="navbar-brand mb-0 text-danger">Folding Furnace</span>
     <li class="nav-item">
-      <a class="nav-link active text-warning" data-toggle="tab" href="#statusTab">Status</a>
+      <a class="nav-link active text-warning bg-secondary" data-toggle="tab" href="#statusTab">Status</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-warning" data-toggle="tab" href="#settingsTab">Settings</a>
+      <a class="nav-link text-warning bg-secondary" data-toggle="tab" href="#settingsTab">Settings</a>
     </li>
   </ul>
   <div id="errorAlert" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
@@ -40,11 +40,34 @@
   </div>
 
   <!-- Tab panes -->
-  <div class="container-fluid tab-content">
-    <div class="tab-pane container-fluid active" id="statusTab">
-      Here is where fun begins
+  <div class="tab-content">
+    <div class="tab-pane active" id="statusTab">
+
+      <div class="col-sm">
+        <div class="card border-light bg-dark mb-3">
+          <div class="card-body text-light text-center">
+            <h6 class="card-title">Last Polled</h6>
+            <p id="lastPolled" class="card-text small">---</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="card border-light bg-dark mb-3">
+          <div class="card-body text-light text-center">
+            <h6 class="card-title">Last Update</h6>
+            <p id="lastUpdate" class="card-text small">---</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h6>Reported Slots</h6>
+        <ul class="list-group" id="slotList"></ul>
+      </div>
     </div>
-    <div class="tab-pane h-100 container-fluid fade" id="settingsTab">
+
+    <div class="tab-pane fade" id="settingsTab">
       <div class="d-flex justify-content-center">
         Resets stored token, requiring re-login
       </div>
@@ -75,7 +98,8 @@
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block">
-                <span id="loginSpinner" class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Log in</button>
+                <span id="loginSpinner" class="d-none spinner-border spinner-border-sm" role="status"
+                  aria-hidden="true"></span> Log in</button>
             </div>
           </form>
           <p class="text-center">Need an account? <a href="#">Sign up</a></p>
