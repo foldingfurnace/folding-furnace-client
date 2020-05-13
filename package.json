@@ -3,9 +3,17 @@
   "version": "0.1.0",
   "description": "Folding Furnace desktop application",
   "main": "main.js",
+  "build": {
+    "appId": "com.app.folding-furnace"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rebuild": "electron-rebuild -f -w yourmodule"
+    "electron-rebuild": "./node_modules/.bin/electron-rebuild.cmd",
+    "electron-packager": "./node_modules/.bin/electron-packager.cmd . --out=package/ --overwrite",
+    "create-installer": "node create-installer.js",
+    "pack": "./node_modules/.bin/electron-builder --dir",
+    "dist": "./node_modules/.bin/electron-builder",
+    "postinstall": "./node_modules/.bin/electron-builder install-app-deps"
   },
   "author": "jpaulsen",
   "license": "MIT",
@@ -17,6 +25,8 @@
   },
   "devDependencies": {
     "electron": "^8.2.5",
-    "electron-rebuild": "^1.10.1"
+    "electron-packager": "^14.2.1",
+    "electron-rebuild": "^1.10.1",
+    "electron-winstaller": "^4.0.0"
   }
 }
