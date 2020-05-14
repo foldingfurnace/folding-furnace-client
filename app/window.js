@@ -1,6 +1,6 @@
 'use strict';
 
-const { BrowserWindow, ipcMain } = require('electron');
+const { BrowserWindow, shell } = require('electron');
 
 
 class Window {
@@ -18,6 +18,12 @@ class Window {
 
         this.bWindow = new BrowserWindow(opts);
         this.bWindow.loadURL(url);
+
+        // URL are redirected out of the application
+        this.bWindow.webContents.on('will-navigate', (event, url) => {
+            event.preventDefault()
+            shell.openExternal(url)
+        });
         //this.bWindow.webContents.openDevTools();
     }
 
@@ -31,10 +37,6 @@ class Window {
 
     show () {
         return this.instance.show();
-    }
-
-    async onSetup () {
-        this.bWindow.show();
     }
 
     async hideLoginScreen () {
