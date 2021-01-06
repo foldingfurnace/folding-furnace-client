@@ -18,7 +18,7 @@
   "author": "jpaulsen",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "jquery": "^3.5.1",
     "keytar": "^5.6.0",
     "promise-socket": "^6.0.3"
